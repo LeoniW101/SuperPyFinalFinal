@@ -1,0 +1,12 @@
+id,product_name,quantity,buy_date,buy_price,expiration_date,expired
+1,leek,250.0,2023-10-24,0.60,2023-11-24,Expired
+2,apples,500.0,2023-10-24,0.20,2023-11-30,Not Expired
+3,rice,99.0,2023-10-24,1.00,2024-10-24,Not Expired
+4,bread,100.0,2023-10-24,0.50,2023-11-05,Not Expired
+5,bananas,150.0,2023-10-24,1.00,2023-11-30,Not Expired
+6,potatoes,97.0,2023-10-24,0.90,2023-12-15,Not Expired
+7,pepernoten,5990.0,2023-11-03,1.50,2023-12-26,no
+8,walnuts,500.0,2023-11-03,2.00,2025-05-12,no
+9,apples,500.0,2023-11-03,0.20,2023-12-18,no
+10,chocolate cake,50.0,2023-11-03,2.00,2023-11-30,no
+11,onions,500.0,2023-11-03,1.00,01-05-2023

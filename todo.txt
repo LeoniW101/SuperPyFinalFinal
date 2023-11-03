@@ -1,0 +1,57 @@
+To Do: 
+- make 1 matlabpilot graph
+- check comments in code
+
+- user guide, plenty of examples (use markdown)
+- 300 word report that highlights 3 technical elements of you inplementation you foind notable: Explain what problem they solve and why you chose to implement them in this way.
+include as report.md in repository 
+
+ACTIONS:
+buy, - buys items
+sell, - sells items
+
+REPORTS:
+report-PL - prints year or month Profit and Revenue overview
+inventory-report - prints report on current inventory 
+bought-report - prints overview of bought.csv with styling on expiration date. 
+
+TIME ACTIONS:
+advance-time - advance time by X number of days to perform actions 
+get-current-date - shows date that CLI is currently working with
+reset-date - reset current date to acutal date when advanced
+
+HELP:
+help - help section for actions
+
+
+-Well-structured and documented code, including: 
+-- Clear and effective variable and function names;
+--Use of comments where the code does not speak for itself;
+--Clear and effective separation of code into separate functions and possibly files.
+
+- A text file containing a usage guide aimed at peers as the target audience. The usage guide should include plenty of examples.
+
+-The application must support: 
+
+OK Setting and advancing the date that the application perceives as 'today';
+OK Recording the buying and selling of products on certain dates;
+OK Reporting revenue and profit over specified time periods;
+OK Exporting selections of data to CSV files;
+--Two other additional non-trivial features of your choice, for example:
+OK The use of an external module Rich(opens in a new tab) to improve the application.
+--The ability to import/export reports from/to formats other than CSV (in addition to CSV).
+--The ability to visualize some statistics using Matplotlib(opens in a new tab) .
+Another feature that you thought of.
+
+-OK products report: Which products the supermarket offers;
+
+-OK inventory report:(inventory.csv)
+How many of each type of product the supermarket holds currently;
+id,product_name,quantity,buy_date,buy_price,expiration_date,expired
+
+-OK bought report: (bought.csv)
+How much each product was bought for, and what its expiry date is;
+id,product_name,quantity,buy_date,buy_price,expiration_date
+
+-OK sold/expired report: 
+How much each product was sold for or if it expired, the fact that it did.
