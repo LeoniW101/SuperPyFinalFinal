@@ -1,12 +1,7 @@
+# Imports
 import argparse
 from rich.console import Console
 from rich.table import Table
-
-# Define path constants
-SOLD_FILE = "inventory_data/sold.csv"
-BOUGHT_FILE = "inventory_data/bought.csv"
-
-# Group related imports together
 from inventory import buy_product, sell_product
 from modules.date_utils import advance_time, read_current_date, reset_current_date
 from modules.reports import (
@@ -14,9 +9,17 @@ from modules.reports import (
     generate_bought_report,
     generate_product_PL_report,
 )
-
-# Group related imports for CSV handling
 from modules.csv_utils import read_csv_data, get_inventory_file_path
+from prompt_toolkit import prompt
+
+# Do not change these lines.
+__winc_id__ = "a2bc36ea784242e4989deb157d527ba0"
+__human_name__ = "superpy"
+# Your code below this line.
+
+# Define path constants
+SOLD_FILE = "inventory_data/sold.csv"
+BOUGHT_FILE = "inventory_data/bought.csv"
 
 console = Console()
 
@@ -33,7 +36,7 @@ def main():
           "advance-time",
           "inventory-report",
           "bought-report",
-          "get-current-date",
+          "check-date",
           "reset-date",
           "help",
       ],
@@ -44,33 +47,33 @@ def main():
 
   if args.action == "buy":
     # Prompt the user to enter product details and buy the product
-    product_name = input("Enter Product Name: ")
-    quantity = float(input("Enter Quantity: "))
+    product_name = prompt("Enter Product Name: ")
+    quantity = float(prompt("Enter Quantity: "))
     price = None
     while price is None:
       try:
-        price = float(input("Enter Price: "))
+        price = float(prompt("Enter Price: "))
         price = f"{price:.2f}"  # Format price as "0.00"
       except ValueError:
         print("Error: Please enter a valid numeric price.")
 
-    expiry_date = input("Enter Expiry Date (YYYY-MM-DD): ")
+    expiry_date = prompt("Enter Expiry Date (YYYY-MM-DD): ")
     buy_product(product_name, quantity, price, expiry_date)
 
   elif args.action == "sell":
     # Perform the "sell" action
     sell_product()
 
-  elif args.action == "product-PL":
+  elif args.action == "report-PL":
     # Generate and print the Profit and Loss report
     sold_file = SOLD_FILE
     bought_file = BOUGHT_FILE
     generate_product_PL_report(sold_file, bought_file)
 
   elif args.action == "advance-time":
-    # Advance the time by a specified number of days
-    days = int(input("Enter the number of days to advance time: "))
-    advance_time(days)
+    # Prompt the user to enter the date to advance time to
+    target_date = prompt("Enter the date to advance time to (YYYY-MM-DD): ")
+    advance_time(target_date)
 
   elif args.action == "inventory-report":
     # Generate and display the inventory report
@@ -82,7 +85,7 @@ def main():
     # Generate and print the Bought report
     generate_bought_report("inventory_data/bought.csv")
 
-  elif args.action == "get-current-date":
+  elif args.action == "check-date":
     # Display the current date
     console.print(read_current_date())
 

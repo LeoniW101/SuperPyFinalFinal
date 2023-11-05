@@ -1,9 +1,10 @@
 import csv
 from datetime import date
 from tabulate import tabulate
-
 from modules.date_utils import read_current_date, advance_time
 from modules.csv_utils import generate_unique_id, add_to_inventory
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 
 # Define path constants for files
 bought_file = 'inventory_data/bought.csv'
@@ -40,7 +41,7 @@ def buy_product(product_name, quantity, price, expiry_date):
   # Calculate if the product has expired
   sale_date = date.today()
   expiration_date = date.fromisoformat(expiry_date)
-  expired = 'yes' if sale_date > expiration_date else 'no'
+  expired = 'Expired' if sale_date > expiration_date else 'Not Expired'
 
   # Update the inventory file with the expiration status
   with open(inventory_file, 'r', newline='') as csvfile:
@@ -57,19 +58,37 @@ def buy_product(product_name, quantity, price, expiry_date):
   print(f'Product with ID {product_id} bought successfully!')
 
 
-  # Function to sell a product
+# Function to read product names from the CSV file
+def read_product_names_from_csv(csv_file):
+  product_names = []
+  with open(csv_file, newline='') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+      product_names.append(row['product_name'])
+  return product_names
+
+
+# Function to sell a product with auto-completion for product names
 def sell_product():
   '''
-  Sell a product from the inventory.
+    Sell a product from the inventory.
 
-  Prompts the user for the product name, quantity sold, 
-  and the price at which it's sold.
-  Updates the inventory and sold files accordingly.
+    Prompts the user for the product name, quantity sold, and the price at which it's sold.
+    Updates the inventory and sold files accordingly.
 
-  Returns:
-      None
-  '''
-  product_name = input('Enter the product name you want to sell: ').lower()
+    Returns:
+        None
+    '''
+
+  # Read product names from the CSV file for auto-completion
+  product_names = read_product_names_from_csv(inventory_file)
+  completer = WordCompleter(product_names)
+
+  # Prompt the user to enter the product name with auto-completion
+  product_name = prompt(
+      'Enter the product name you want to sell (Auto-completion from inventory.csv): ',
+      completer=completer).lower()
+
   inventory = []
 
   with open(inventory_file, 'r', newline='') as csvfile:
@@ -122,7 +141,7 @@ def sell_product():
 
       sale_date = date.today()
       expiration_date = date.fromisoformat(expiry_date)
-      expired = 'yes' if sale_date > expiration_date else 'no'
+      expired = 'Expired' if sale_date > expiration_date else 'Not Expired'
 
       if len(inventory[index]) >= 6:
         inventory[index][6] = expired

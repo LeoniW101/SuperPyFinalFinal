@@ -1,6 +1,7 @@
 from datetime import date, datetime, timedelta
 import os
 
+
 # Read the current date from a file or return today's date
 def read_current_date():
   current_date_file = 'current_date.txt'
@@ -10,16 +11,22 @@ def read_current_date():
   with open(current_date_file, 'r') as file:
     return datetime.strptime(file.read(), '%Y-%m-%d').date()
 
-# Advance the current date by a specified number of days
-def advance_time(days):
-  current_date = read_current_date()
-  new_date = current_date + timedelta(days=days)
-  write_current_date(new_date)  # Update the current date in the file
+
+# Advance the current date to a specified target date
+def advance_time(target_date):
+  try:
+    target_date = datetime.strptime(target_date, '%Y-%m-%d').date()
+    write_current_date(target_date)  # Update the current date in the file
+    return True
+  except ValueError:
+    return False  
+
 
 # Write the new current date to a file
 def write_current_date(new_date):
   with open('current_date.txt', 'w') as file:
     file.write(new_date.strftime('%Y-%m-%d'))
+
 
 # Reset the current date by removing the date file
 def reset_current_date():

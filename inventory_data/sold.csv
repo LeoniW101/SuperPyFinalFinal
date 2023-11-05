@@ -1,6 +1,5 @@
 id,product_name,quantity_sold,sell_date,buy_date,price_bought,price_sold,expiration_date,expired
-1,rice,1.0,2023-10-24,2023-10-24,1.00,0.5,2024-10-24,Not Expired
-2,bread,1.0,2023-10-24,2023-10-24,0.50,2.0,2023-11-05,Not Expired
-3,bananas,2.0,2023-10-24,2023-10-24,1.00,0.6,2023-11-30,Not Expired
-4,rice,2.0,2023-10-24,2023-10-24,1.00,2.0,2024-10-24,Not Expired
-5,pepernoten,10.0,2023-11-03,2023-11-03,1.50,3.0,2023-12-26,no
+1,cookies,5.0,2023-11-04,2023-11-04,2.00,6.0,2024-03-12,Not Expired
+2,leek,2.0,2023-11-04,2023-11-04,0.60,2.0,2023-11-24,Not Expired
+3,raisins,2.0,2023-11-04,2023-11-04,1.00,2.0,2024-05-29,Not Expired
+4,rice,2.0,2023-11-04,2023-11-04,1.00,2.0,2024-12-16,Not Expired

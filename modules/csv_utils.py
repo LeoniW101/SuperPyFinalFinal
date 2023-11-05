@@ -39,11 +39,17 @@ def generate_unique_id(file_path):
   with open(file_path, 'r', newline='') as csvfile:
     reader = csv.reader(csvfile)
     next(reader)  # Skip the header row
-    ids = [int(row[0]) for row in reader]
+    ids = []
+    for row in reader:
+      if len(row) > 0:
+        try:
+          ids.append(int(row[0]))
+        except (ValueError, TypeError):
+          pass  
   if ids:
     new_id = max(ids) + 1
   else:
-    new_id = 1  # Start from 1 if the file is empty
+    new_id = 1  
   return str(new_id)
 
 
