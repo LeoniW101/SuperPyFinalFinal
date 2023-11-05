@@ -4,8 +4,6 @@
 This user guide provides an overview of the SuperPy Python Inventory Management Application and explains how to perform various tasks within the application. Users can reference this guide for instructions and troubleshooting information.
 
 # Table of Contents: 
-# User Guide: SuperPy
-  ## An Inventory Management Application
 # 1. Introduction
   ## 1.1 Overview
   ## 1.2 Purpose
@@ -41,12 +39,12 @@ This user guide provides an overview of the SuperPy Python Inventory Management 
    4. **HELP**:
 # 7. Troubleshooting and Support
   ## 7.1 Common Issues
-   **1. Application Not Launching:**
-   **2. Invalid Date Format:**
-   **3. Data Loss:**
-   **4. Unexpected Behavior:**
-   **5. Missing CSV Files:**
-   **6. Terminal Errors:**
+   1. **Application Not Launching:**
+   2. **Invalid Date Format:**
+   3. **Data Loss:**
+   4. **Unexpected Behavior:**
+   5. **Missing CSV Files:**
+   6. **Terminal Errors:**
   ## 7.2 Getting Help and Support
 # 8. Appendix
   ## 8.1 Glossary
@@ -121,6 +119,8 @@ To view a report in the inventory type the command:
 python main.py inventory-report
 ```
 This will show you an overview of the current inventory as below: 
+![4 1 inventory report](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/02fac329-a53e-406f-b37f-2ad82363baea)
+
 
 #### Example:
 To view your current inventory, follow these steps:
@@ -141,7 +141,10 @@ To view a report on Revenue and profit type the command:
 ```bash
 python main.py report-PL
 ```
-This will show you an report on revenue and profit as below: : 
+This will show you an report on revenue and profit as below: 
+![report PL](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/f4dc3092-6643-46a2-b7f8-2ace7ca6bdfd)
+
+
 #### Example:
 You want to see the PL report for November 2023. 
 Type 
@@ -164,6 +167,8 @@ To view a report on items bought type:
 python main.py bought-report
 ```
 This will show you an report on bought items as below:
+![bought report](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/1c705606-a2b0-4e8d-b468-6095f1b723e6)
+
 
 #### Example:
 To generate a bought item report, type the following command in the terminal:
@@ -188,6 +193,8 @@ You want to set the current date to February 15, 2023. Here's how you would do i
 2. Enter the desired date: 2023-02-15.
 
 The current date will be updated to February 15, 2023.
+![advance time](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/b3c2e373-3abc-4920-9578-8de05059a822)
+
 
 ## 5.2 Checking the Current Date
 
@@ -199,7 +206,9 @@ To check the current date, simply run the following command:
 ```bash
 python main.py check-date
 ```
-This will than reply with the date currently in use:: 
+This will than reply with the date currently in use:
+![check date](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/f96e5a96-1687-4b84-b25f-5e9aa9a488f0)
+
 
 ## 5.3 Resetting the Current Date
 Of course you will need to go back to the real world time as well. 
@@ -210,10 +219,7 @@ You've set the current date to a specific date and want to reset it to the actua
 python main.py reset-date
 ```
 This will reset the date. To make sure it worked you can use the check-date command again: 
-
-
-
-
+![reset date](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/c2efe41a-4646-4463-9bb3-836f83312e9f)
 
 # 6. Help Section
 In SuperPy we've included a 'help' section to provide you with a quick reference to all available actions, reports, and time-related commands. To access this helpful guide, simply type the following command:
@@ -223,8 +229,7 @@ python main.py help
 ```
 
 Upon executing this command, the CLI will display an organized list of available actions and their descriptions. This guide is designed to assist you in understanding how to use the CLI effectively.
-
-
+![help section](https://github.com/LeoniW101/SuperPyFinalFinal/assets/127887702/59ab05d0-aa2a-4d82-b0ed-ec15151ccc8d)
 
 
 ## 6.1 Categories in Help
