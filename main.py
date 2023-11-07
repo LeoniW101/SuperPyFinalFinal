@@ -3,7 +3,7 @@ import argparse
 from rich.console import Console
 from rich.table import Table
 from inventory import buy_product, sell_product
-from modules.date_utils import advance_time, read_current_date, reset_current_date
+from modules.date_utils import advance_time, read_current_date, reset_current_date, time_travel
 from modules.reports import (
     generate_inventory_report,
     generate_bought_report,
@@ -38,6 +38,7 @@ def main():
           "bought-report",
           "check-date",
           "reset-date",
+          "time-travel",
           "help",
       ],
       help="Action to perform",
@@ -92,6 +93,15 @@ def main():
   elif args.action == "reset-date":
     # Reset the current date
     reset_current_date()
+
+  elif args.action == "time-travel":
+    # Prompt the user to enter the number of days to time travel
+    days = int(
+        input(
+            "Enter the number of days to time travel (positive for the future, negative for the past): "
+        ))
+    new_date = time_travel(days)
+    console.print(f"Current date after time travel: {new_date}")
 
   elif args.action == "help":
     # Display help message directly here

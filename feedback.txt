@@ -1,0 +1,6 @@
+DONE - advance time X aantal dagen erin - vond ik niet logisch in de praktijk daarom op datum gedaan. nu Time-travel met X aantal dagen erin gezet. 
+
+verbeterpunten: 
+user input valideren - Snap ik - maar al zoveel tijd bezig geweest dat ik dit niet nu ga toepassen.
+verwijder regel uit inventory.csv als product 0 is - gedaan 
+verkoop expired producten niet mogelijk (ook niet als meerdere regels met verschillende expiry dates) - klopt, maar gezien de tijd al gespendeerd aan de opdracht ga ik dit ook niet nu nog toepassen. 

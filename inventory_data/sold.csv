@@ -1,5 +1,8 @@
 id,product_name,quantity_sold,sell_date,buy_date,price_bought,price_sold,expiration_date,expired
-1,cookies,5.0,2023-11-04,2023-11-04,2.00,6.0,2024-03-12,Not Expired
-2,leek,2.0,2023-11-04,2023-11-04,0.60,2.0,2023-11-24,Not Expired
-3,raisins,2.0,2023-11-04,2023-11-04,1.00,2.0,2024-05-29,Not Expired
-4,rice,2.0,2023-11-04,2023-11-04,1.00,2.0,2024-12-16,Not Expired
+1,cheese,2.0,2023-11-06,2023-11-06,2.00,3.0,2023-11-30,Not Expired
+2,bread,2.0,2023-11-07,2023-11-07,1.00,2.0,2023-11-20,Not Expired
+3,cheese,2.0,2023-11-07,2023-11-07,2.00,3.0,2023-11-30,Not Expired
+4,cheese,2.0,2023-11-07,2023-11-07,2.00,3.0,2023-11-30,Not Expired
+5,cheese,2.0,2023-11-07,2023-11-07,2.00,3.0,2023-11-30,Not Expired
+6,milk,5.0,2023-11-07,2023-11-07,1.00,3.0,2023-11-10,Not Expired
+7,oats,5.0,2023-11-07,2023-11-07,1.00,2.0,2023-11-30,Not Expired

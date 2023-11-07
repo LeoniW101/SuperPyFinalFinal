@@ -68,6 +68,77 @@ def read_product_names_from_csv(csv_file):
   return product_names
 
 
+#function to sell product
+import csv
+from datetime import date
+from tabulate import tabulate
+from modules.date_utils import read_current_date, advance_time
+from modules.csv_utils import generate_unique_id, add_to_inventory
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+
+# Define path constants for files
+bought_file = 'inventory_data/bought.csv'
+inventory_file = 'inventory_data/inventory.csv'
+sold_file = 'inventory_data/sold.csv'
+
+
+# Function to buy a product and add it to inventory
+def buy_product(product_name, quantity, price, expiry_date):
+  '''
+  Buy a product and add it to the inventory.
+
+  Args:
+      product_name (str): The name of the product.
+      quantity (float): The quantity of the product bought.
+      price (str): The price of the product.
+      expiry_date (str): The expiry date of the product in 'YYYY-MM-DD' format.
+
+  Returns:
+      None
+  '''
+  # Convert product name to lowercase for consistency
+  product_name = product_name.lower()
+
+  # Generate a unique product ID
+  product_id = generate_unique_id(bought_file)
+
+  # Add the product to the bought and inventory files
+  add_to_inventory(bought_file, product_id, product_name, quantity,
+                   date.today().strftime('%Y-%m-%d'), price, expiry_date)
+  add_to_inventory(inventory_file, product_id, product_name, quantity,
+                   date.today().strftime('%Y-%m-%d'), price, expiry_date)
+
+  # Calculate if the product has expired
+  sale_date = date.today()
+  expiration_date = date.fromisoformat(expiry_date)
+  expired = 'Expired' if sale_date > expiration_date else 'Not Expired'
+
+  # Update the inventory file with the expiration status
+  with open(inventory_file, 'r', newline='') as csvfile:
+    reader = csv.reader(csvfile)
+    inventory = list(reader)
+
+  for index, row in enumerate(inventory):
+    if row and row[0] == product_id:
+      inventory[index].append(expired)
+
+  with open(inventory_file, 'w', newline='') as csvfile:
+    csv.writer(csvfile).writerows(inventory)
+
+  print(f'Product with ID {product_id} bought successfully!')
+
+
+# Function to read product names from the CSV file
+def read_product_names_from_csv(csv_file):
+  product_names = []
+  with open(csv_file, newline='') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+      product_names.append(row['product_name'])
+  return product_names
+
+
 # Function to sell a product with auto-completion for product names
 def sell_product():
   '''
@@ -163,8 +234,21 @@ def sell_product():
       print(f'{quantity_sold} units of {product_name} sold successfully!')
 
       product_found = True
-    else:
-      print('Error: Insufficient quantity in inventory to sell.')
+
+      # Check if the quantity in inventory has reached 0, and prompt the user to delete the product
+      if inventory[index][2] == '0.0':
+        delete_choice = input(
+            f'Product {product_name} has reached inventory 0. Do you want to delete it from the inventory? (y/n): '
+        )
+        if delete_choice.lower() == 'y':
+          # Remove the product from the inventory list
+          del inventory[index]
+
+          # Update the inventory file without the deleted product
+          with open(inventory_file, 'w', newline='') as csvfile:
+            csv.writer(csvfile).writerows(inventory)
+
+          print(f'Product {product_name} has been deleted from the inventory.')
 
   if not product_found:
     print(f'Error: {product_name} not found in inventory.')

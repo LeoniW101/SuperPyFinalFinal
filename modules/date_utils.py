@@ -19,7 +19,7 @@ def advance_time(target_date):
     write_current_date(target_date)  # Update the current date in the file
     return True
   except ValueError:
-    return False  
+    return False
 
 
 # Write the new current date to a file
@@ -45,3 +45,13 @@ def check_expiry_status(expiry_date):
     return 'Expired'
   else:
     return 'Not Expired'
+
+
+# Function to time travel by a specified number of days
+def time_travel(days):
+  current_date = read_current_date()  # Get the current date
+  new_date = current_date + timedelta(days=days)  # Calculate the new date
+
+  # Update the current date in the file
+  write_current_date(new_date)
+  return new_date
